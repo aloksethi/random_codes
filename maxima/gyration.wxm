@@ -1,0 +1,16 @@
+/* [wxMaxima batch file version 1] [ DO NOT EDIT BY HAND! ]*/
+/* [ Created with wxMaxima version 22.04.0 ] */
+/* [wxMaxima: input   start ] */
+e1:i=(v-v2)*s*Cg + (v-v3)*s*Cd$
+e2:(v-v2)*s*Cg + Gm*(v-v2) + (v3-v2)/R0 = v2/Z1$
+e3:(v-v3)*s*Cd = Gm*(v-v2) + (v3-v2)/R0 + v3/Z2$
+op_sol:solve([e1, e2 ,e3], [v, v2, v3])$
+zinp:fullratsimp(rhs(first(first(op_sol)))/i)$
+z_real:float(realpart(subst([Cd=1.7e-15,Z2=1/(1/500+1/(s*500e-12)),Z1=(0+s*L*1e-12),Gm=29.4e-3,Cg=4.1e-15,s=%i*2*%pi*f, R0=1/Gds, Gds=4.0e-3, f=28e9], zinp)))$
+wxplot2d([z_real], [L,10,500]);
+/* [wxMaxima: input   end   ] */
+
+
+
+/* Old versions of Maxima abort on loading files that end in a comment. */
+"Created with wxMaxima 22.04.0"$
